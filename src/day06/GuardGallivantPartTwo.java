@@ -37,6 +37,10 @@ public class GuardGallivantPartTwo {
                 markNewObstacle(updatedMap, x, y);
                 System.out.printf("Obstacle at (%d,%d)%n", x, y);
                 do {
+                    if (guardPosition == null) {
+                        System.out.println("Guard is null");
+                        break;
+                    }
                     visitedPositions.add(guardPosition);
                     if (isGuardInObstacle(guardPosition, updatedMap)) {
                         guardPosition = moveBackwards(guardPosition, direction);
