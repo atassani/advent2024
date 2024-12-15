@@ -16,4 +16,21 @@ public class Position {
     public int getY() {
         return y;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Position position = (Position) obj;
+        return x == position.x && y == position.y;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("(%d,%d)", x, y);
+    }
 }
