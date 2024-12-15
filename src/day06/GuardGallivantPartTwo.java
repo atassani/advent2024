@@ -21,7 +21,7 @@ public class GuardGallivantPartTwo {
     private void run() {
         List<String> map = readLines();
         //map.stream().forEach(System.out::println);
-        boolean wasPathVisited = false;
+        boolean wasPathVisited;
         int numFounds = 0;
         for (int y = 0; y < map.size(); y++) {
             for (int x = 0; x < map.get(0).length(); x++) {
@@ -32,7 +32,7 @@ public class GuardGallivantPartTwo {
                 Direction direction = UP;
                 Position originalPosition =locateGuard(map);
                 Position guardPosition =locateGuard(map);
-                Position prevGuardPosition = null;
+                Position prevGuardPosition;
                 List<String> updatedMap = new ArrayList<>(map);
                 markNewObstacle(updatedMap, x, y);
                 System.out.printf("Obstacle at (%d,%d)%n", x, y);
@@ -69,10 +69,7 @@ public class GuardGallivantPartTwo {
 
     private boolean isPathVisitied(List<Position> visitedPositions, Position guardPosition, Position prevGuardPosition) {
         int index = visitedPositions.indexOf(guardPosition);
-        if (index > 1 && visitedPositions.get(index -1).equals(prevGuardPosition)) {
-            return true;
-        }
-        return false;
+        return index > 1 && visitedPositions.get(index -1).equals(prevGuardPosition);
     }
 
     private void markNewObstacle(List<String> map, int x, int y) {
